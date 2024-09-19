@@ -71,7 +71,6 @@ for year, dates in dates_by_year.items():
             print(f"Error - Could not find date {d}, skipping")
         buy_df.to_csv(os.path.join(save_dir, f'insider_buys_{year}.csv'))
     
-
 endtime = f"Execution Time: {datetime.now() - start_time}"
 print()
 print(f'All CSV Files from {end_date} to {start_time} created.')
