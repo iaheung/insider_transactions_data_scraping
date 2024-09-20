@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 import os
 import warnings
@@ -18,7 +18,7 @@ if not os.path.exists(save_dir):
 print(f"Saving data from {start_time}")
 
 month = start_time.strftime('%m')
-day = start_time.strftime('%d')
+day = (start_time - timedelta(1)).strftime('%d')
 year = start_time.strftime('%Y')
 
 sell_df = pd.read_csv(os.path.join(save_dir, f'insider_sales_{year}.csv'))
