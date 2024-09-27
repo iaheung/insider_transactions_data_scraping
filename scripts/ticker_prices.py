@@ -43,8 +43,6 @@ csv_directory = '../data'
  
 df = pd.read_csv(os.path.join(csv_directory, 'insider_all.csv'))
 
-df = pd.DataFrame({'ticker': df['ticker'].unique()})
-
 days = 51
 
 # start and end dates for yfinance
