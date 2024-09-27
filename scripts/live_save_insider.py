@@ -38,7 +38,7 @@ try:
                         'trade_type', 'price', 'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']
         
         sell_df = pd.concat([df,sell_df], axis=0)
-        sell_df.to_csv(os.path.join(save_dir, f'insider_sales_{year}.csv'))
+        sell_df.to_csv(os.path.join(save_dir, f'insider_sales_{year}.csv'), index=False)
 except:
     print(f"Error - Could not find date {start_time}")
 
@@ -57,7 +57,7 @@ try:
                         'trade_type', 'price', 'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']
         
         buy_df = pd.concat([df,buy_df], axis=0)
-        buy_df.to_csv(os.path.join(save_dir, f'insider_buys_{year}.csv'))
+        buy_df.to_csv(os.path.join(save_dir, f'insider_buys_{year}.csv'), index=False)
 except:
     print(f"Error - Could not find date {start_time}")
 
