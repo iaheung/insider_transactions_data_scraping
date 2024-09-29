@@ -15,7 +15,7 @@ In this project, I have split the project into two phases, the first phase being
 ## Contents and Usage
 To get insider data, there are two .bat files to run the scripts. If you are on a Mac/Linux device, a separate version of the .bat files is written in .sh files.
 
-Use a Task Scheduler to run the batch file every day in order to update the data with the previous day's trading data. Here is a [video](https://www.youtube.com/watch?v=EInOL6D5f3Q) on how to use Windows Task Scheduler. Likewise, for Mac, here is a guide on how to use [Automator](https://www.youtube.com/watch?v=nVlOapHc-kg).
+Use a Task Scheduler to run the batch file every day in order to update the data with the previous day's trading data. Here is a [video](https://www.youtube.com/watch?v=EInOL6D5f3Q) on how to use Windows Task Scheduler. Likewise, for Mac, here is a [video](https://www.youtube.com/watch?v=nVlOapHc-kg) on how to use Automator.
 
 ## Required Software and Packages
 Here is the list of required Python packages:
