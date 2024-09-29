@@ -5,12 +5,12 @@ Having access to insider transactions can allow investors to learn more about th
 In this project, I have split the project into two phases, the first phase being the web scraping part of the project, and the second phase being the interactive dashboard constructed on Tableau. 
 
 ## Table of Contents
-- Contents and Usage
-- Required Software and Packages
-- Web Scraping
-- Data Cleaning and Processing
-- Tableau Dashboard
-- Conclusions
+- [Contents and Usage](#contents-and-usage)
+- [Required Software and Packages](#required-software-and-packages)
+- [Web Scraping](#web-scraping)
+- [Data Cleaning and Processing](#data-cleaning-and-processing)
+- [Tableau Dashboard](#tableau-dashboard)
+- [Conclusions](#conclusions)
 
 ## Contents and Usage
 To get insider data, there are two .bat files to run the scripts. If you are on a Mac/Linux device, a separate version of the .bat files is written in .sh files.
@@ -44,7 +44,5 @@ After scraping the data, before it can be put onto the Tableau Dashboard, the da
 
 ## Tableau Dashboard (Note to self: add KPIs for number of transactions)
 The Tableau Dashboard's role is to highlight key performance indicators (KPIs) that show an overview of the insider transactions across a time period. Along with KPIs, there are interactive charts and tables to help investors key in on specific trends, such as sector specific transactions, insiders with the highest transaction value, and buy vs sell trends.
-
-
 
 ## Conclusions
