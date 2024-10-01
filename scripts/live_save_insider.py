@@ -1,9 +1,11 @@
-import pandas as pd
-from datetime import datetime, timedelta
-import requests
 import os
-import warnings
 import sys
+from datetime import datetime, timedelta
+import pandas as pd
+import requests
+from get_sector import get_sector
+
+import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 start_time = datetime.now() 
@@ -38,6 +40,8 @@ try:
                         'trade_type', 'price', 'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']
         
         sell_df = pd.concat([df,sell_df], axis=0)
+        sell_df['sector'] = sell_df['ticker'].apply(lambda ticker: get_sector(ticker))
+        
         sell_df.to_csv(os.path.join(save_dir, f'insider_sales_{year}.csv'), index=False)
 except:
     print(f"Error - Could not find date {start_time}")
@@ -57,6 +61,8 @@ try:
                         'trade_type', 'price', 'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']
         
         buy_df = pd.concat([df,buy_df], axis=0)
+        buy_df['sector'] = buy_df['ticker'].apply(lambda ticker: get_sector(ticker))
+        
         buy_df.to_csv(os.path.join(save_dir, f'insider_buys_{year}.csv'), index=False)
 except:
     print(f"Error - Could not find date {start_time}")

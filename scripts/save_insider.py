@@ -1,7 +1,9 @@
-import pandas as pd
-from datetime import datetime, timedelta
-import requests
 import os
+from datetime import datetime, timedelta
+import pandas as pd
+import requests
+from get_sector import get_sector
+
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -11,7 +13,7 @@ end_date = datetime(2014,1,1) # we set the start date to 1/1/2014
 
 # dictionary to store an array of datetime of calendar dates in each year 
 dates_by_year = {}
-current_date = start_time
+current_date = start_time - timedelta(1)
 
 # interate until end date is reached
 while current_date >= end_date:
@@ -64,6 +66,7 @@ for year, dates in dates_by_year.items():
             print(f"Error - Could not find date {d}, skipping")
 
         # save each year's data in its own df
+        sell_df['sector'] = sell_df['ticker'].apply(lambda ticker: get_sector(ticker))
         sell_df.to_csv(os.path.join(save_dir, f'insider_sales_{year}.csv'), index=False)
         
         # buying
@@ -85,6 +88,7 @@ for year, dates in dates_by_year.items():
             print(f"Error - Could not find date {d}, skipping")
 
         # save each year's data in its own df
+        buy_df['sector'] = buy_df['ticker'].apply(lambda ticker: get_sector(ticker))
         buy_df.to_csv(os.path.join(save_dir, f'insider_buys_{year}.csv'), index=False)
     
 endtime = f"Execution Time: {datetime.now() - start_time}"
