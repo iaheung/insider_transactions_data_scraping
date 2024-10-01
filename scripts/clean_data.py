@@ -1,6 +1,7 @@
-import pandas as pd
 import os
+import pandas as pd
 from concat_dfs import concatenate_dfs
+
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -16,7 +17,7 @@ for key in trades.keys():
     
     df = df[['transaction_date', 'trade_date', 'ticker',
         'company_name', 'owner_name', 'title', 'trade_type', 'price',
-        'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']]
+        'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value', 'sector']]
 
     df[['price', 'value']] = df[['price', 'value']].replace({'\$': '', ',': ''}, regex=True)
     df['shares_change_pct'] = df['shares_change_pct'].replace({'%': '', '\+': '', 'New': '-1', '>999': '-1'}, regex=True)
