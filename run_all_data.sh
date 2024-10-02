@@ -8,5 +8,6 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate your_env_name
 
 python save_insider.py
+python data_processing.py
 
 echo "Data saved successfully"

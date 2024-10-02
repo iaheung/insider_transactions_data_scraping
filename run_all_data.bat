@@ -9,7 +9,9 @@ IF ERRORLEVEL 1 (
 )
 
 CALL conda activate your_env_name
+
 python save_insider.py
+python data_processing.py
 
 ECHO Data saved successfully
 PAUSE
