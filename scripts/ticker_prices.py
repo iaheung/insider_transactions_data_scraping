@@ -43,16 +43,19 @@ csv_directory = '../data'
  
 df = pd.read_csv(os.path.join(csv_directory, 'insider_all.csv'))
 
-days = 51
+unique_tickers = pd.DataFrame({'ticker': df['ticker'].unique()})
+
+# days is number of days of data to collect from yfinance for moveing average computation based on PERIOD
+days = PERIOD
 
 # start and end dates for yfinance
 start = startTime - timedelta(days)
 end = startTime
 
-df['current_price'] = df['ticker'].apply(lambda x: get_price(x, start, end))
-df[f'moving_average_{PERIOD}'] = df['ticker'].apply(lambda x: get_ma(x, start, end))
+unique_tickers['current_price'] = unique_tickers['ticker'].apply(lambda x: get_price(x, start, end))
+unique_tickers[f'moving_average_{PERIOD}'] = unique_tickers['ticker'].apply(lambda x: get_ma(x, start, end))
 
-df.to_csv(os.path.join(csv_directory, 'ticker_price_list.csv'))
+unique_tickers.to_csv(os.path.join(csv_directory, 'ticker_price_list.csv'))
 
 endtime = f"Execution Time: {datetime.now() - startTime}"
 print(f'ticker_price_list.py - Stock prices for today at {startTime}, collected')
