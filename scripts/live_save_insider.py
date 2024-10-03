@@ -45,17 +45,16 @@ for t in trade_type.keys():
                             'trade_type', 'price', 'shares_traded', 'shares_after_trade', 'shares_change_pct', 'value']
             
             save_df = pd.concat([df,save_df], axis=0)
-    
             save_df.to_csv(os.path.join(filepath, f'insider_{t}_{year}.csv'), index=False)
             
             # clean data and add sector info for insider_master.csv
             df = clean_df(df)
             df['sector'] = df['ticker'].apply(lambda ticker: get_sector(ticker))
-
+            
             # updating insider_master.csv with cleaned data
             master_df = pd.read_csv(os.path.join(filepath, 'insider_master.csv'))
             master_df = pd.concat([df, master_df])
-            master_df.to_csv(os.path.join(save_df, f'insider_master.csv'), index=False)
+            master_df.to_csv(os.path.join(filepath, f'insider_master.csv'), index=False)
     except:
         print(f"Error - Could not find date {yesterday.date()}")
     
