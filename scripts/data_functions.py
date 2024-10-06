@@ -5,7 +5,7 @@ def clean_df(df):
     df[['price', 'value']] = df[['price', 'value']].replace({'\$': '', ',': ''}, regex=True)
     df['shares_change_pct'] = df['shares_change_pct'].replace({'%': '', '\+': '', 'New': '-1', '>999': '-1'}, regex=True)
     df['ticker'] = df['ticker'].str.replace('.', '', regex=False)
-
+    df['trade_type'] = df['trade_type'].map({'S - Sale': 'Sale', 'S - Sale+OE': 'Sale (OE)', 'P - Purchase': 'Buy'})
     df['price'] = df['price'].astype(float)
     df['value'] = df['value'].astype(float)
     df['shares_change_pct'] = df['shares_change_pct'].astype(float) * 0.01
