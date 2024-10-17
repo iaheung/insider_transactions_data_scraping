@@ -13,17 +13,18 @@ Insights and recommendations focus on the following key areas:
 - Sector Comparisons: Comparative analysis across sectors, highlighting which industries are experiencing the most insider trading activity
 - Stock Impact: Evaluation of stock price changes in relation to insider buys and sells, revealing how insider sentiment impacts market movement
 
-To see how to reproduce the dashboard and run the code in this project, please follow the [setup](#setup) in the bottom of the readme.
+To see how to reproduce the dashboard and run the code in this project, please follow the [setup](#setup) at the bottom of the readme.
 
-To see the Tableau dashboard it is linked [here](https://public.tableau.com/app/profile/ian.heung/viz/InsiderDashboard/Dashboard1) 
+To see the Tableau dashboard, it is linked [here](https://public.tableau.com/app/profile/ian.heung/viz/InsiderDashboard/Dashboard1).
 
-Please look at the individual batch files and scripts to see how the data is scraped, cleaned, and proccessed for the dashboard.
+Please look at the individual batch files and scripts to see how the data is scraped, cleaned, and processed for the dashboard.
 
 ## Table of Contents
 - [Web Scraping](#web-scraping)
 - [Data Cleaning and Processing](#data-cleaning-and-processing)
 - [Tableau Dashboard](#tableau-dashboard)
 - [Insights](#insights)
+- [Conclusion](#conclusion)
 - [Setup](#setup)
 - [Contents and Usage](#contents-and-usage)
 
@@ -55,29 +56,29 @@ Key data validation steps included:
 - **String validation**: Removed non-alphanumeric characters from fields like tickers and transaction types
 - **Datetime validation**: Flagged any future dates or dates implausibly far in the past
 
-Following this exploration, I developed the afformentioned data cleaning scripts to automate these steps, ensuring the data was clean, consistent, and ready for the Tableau dashboard.
+Following this exploration, I developed the aforementioned data cleaning scripts to automate these steps, ensuring the data was clean, consistent, and ready for the Tableau dashboard.
 
-The resulting data comes in two .csv files, `insider_master.csv` and `ticker_price_list.csv`. I used data from 1/1/2014 to 10/12/2024 (the time of publishing this repo), and there is almost 600,000 transactions in `insider_master.csv`, and close to 10,000 tickers in `ticker_price_list.csv`. 
+The resulting data comes in two .csv files, `insider_master.csv` and `ticker_price_list.csv`. I used data from 1/1/2014 to 10/12/2024 (the time of publishing this repo), and there are almost 600,000 transactions in `insider_master.csv` and close to 10,000 tickers in `ticker_price_list.csv`.
 
 ![Data Tables](images/datatable.png)
 
 *Data Structure of the 2 .csv files for Tableau Dashboard*
 
 ## Tableau Dashboard
-The Tableau Dashboard's role is to highlight key performance indicators (KPIs) that show an overview of the total value of insider transactions. There are interactive charts and tables to help investors key in on specific trends and key companies, such as buy vs sell trends, stock price increases and decreases due to insider activity, and high value insiders and sectors. 
+The Tableau Dashboard's role is to highlight key performance indicators (KPIs) that show an overview of the total value of insider transactions. There are interactive charts and tables to help investors key in on specific trends and key companies, such as buy vs sell trends, stock price increases and decreases due to insider activity, and high-value insiders and sectors.
 
 ![Dashboard](images/dashboardpreview.png)
 
 *Tableau Dashboard, link [here](https://public.tableau.com/app/profile/ian.heung/viz/InsiderDashboard/Dashboard1) for interactive version*
 
-The dashboard uses a simple color scheme: 
+The dashboard uses a simple color scheme:
 - Buy - Green
 - Sell - Red
 - Sell Option Exercised - Yellow
 
 Through its intuitive design, the dashboard allows investors to make data-driven decisions based on a variety of insights:
 
-- **Sector and Company Trade Analysis**: The stacked bar charts showing top sectors and companies by net trade value offer a quick snapshot of where insider activity is concentrated. This makes it easier for investors to see which sectors or companies are experiencing heavy insider buy or sell activities. Investors can click on a sector bar to filter and view the data for that specific sector across all other charts in the dashboard. 
+- **Sector and Company Trade Analysis**: The stacked bar charts showing top sectors and companies by net trade value offer a quick snapshot of where insider activity is concentrated. This makes it easier for investors to see which sectors or companies are experiencing heavy insider buy or sell activities. Investors can click on a sector bar to filter and view the data for that specific sector across all other charts in the dashboard.
 
 - **Buy vs Sell Trends:** The bar and area charts provide a visual breakdown of buy vs sell trends over a defined period. Investors can see whether insider transactions are trending towards buying, which may indicate confidence, or selling, which could be interpreted as caution from insiders. These trends can serve as early signals of future stock performance.
 
@@ -88,15 +89,15 @@ Through its intuitive design, the dashboard allows investors to make data-driven
 For the purposes of this analysis, I will look at the transactions from the previous quarter, as shown by the image.
 
 ## Insights
-From the intial view of the dashboard, we see that there is an overwhelming proportion of insider selling, as compared to insider buying. A quick look at the KPIs in the top show that only 5.58% of net transaction value origniated from insider buys, while the rest were from insider selling. 
+From the initial view of the dashboard, we see that there is an overwhelming proportion of insider selling compared to insider buying. A quick look at the KPIs at the top shows that only 5.58% of net transaction value originated from insider buys, while the rest were from insider selling.
 
-The stacked bar charts show that the top 5 companies in net traded value all were results of insider selling, and if we look at the sector specific stacked bar chart, it shows all sectors are selling significantly more than there is buying.
+The stacked bar charts show that the top 5 companies in net traded value were all results of insider selling, and if we look at the sector-specific stacked bar chart, it shows all sectors are selling significantly more than buying.
 
-This is further reflected in the Buy vs Sell and Net Transaction Value % plots, where we see the general trend of significantly more insider transactions in volumne and value.
+This is further reflected in the Buy vs Sell and Net Transaction Value % plots, where we see the general trend of significantly more insider transactions in volume and value.
 
-There can be several reasons for significantly more insider selling than buying. Insiders may sell shares to take profits, meet personal liquidity needs, or diversify their investments. They might also sell for tax planning purposes or if they anticipate a downturn in the company’s performance. 
+There can be several reasons for significantly more insider selling than buying. Insiders may sell shares to take profits, meet personal liquidity needs, or diversify their investments. They might also sell for tax planning purposes or if they anticipate a downturn in the company’s performance.
 
-If we look at sector by value traded, we see that health care has a significantly larger portion of insider buying as compared to other sectors, $1,146M in total insider buying, the highest for all sectors. We can key into the data to see what is happening in the healthcare sector.
+If we look at sector value traded, we see that healthcare has a significantly larger portion of insider buying compared to other sectors, $1,146M in total insider buying, the highest for all sectors. We can key into the data to see what is happening in the healthcare sector.
 
 We filter the data by trade type so we only get insider buy data. From this, we can see the companies by top net traded value, as well as the top investments by insiders.
 
@@ -104,19 +105,35 @@ We filter the data by trade type so we only get insider buy data. From this, we 
 
 *Healthcare Specific Companies and Insiders*
 
-We can see the top 5 companies in net traded value, and some of the high profile insider transactions in the tree map. To find out more behind the transactions, you can hover over each field and find the ticker associated with the company.
+We can see the top 5 companies in net traded value, and some of the high-profile insider transactions in the treemap. To find out more behind the transactions, you can hover over each field and find the ticker associated with the company.
 
 ![Buy vs Sell Peak](images/transactionspeak.png)
 
-*Peak in Insider Buying in Health Care*
+*Peak in Insider Buying in Healthcare*
 
-If we look at the Buy vs Sell chart, we see a gradual rise in number of transactions in the middle of the quarter, suggesting that there was momentum in the healthcare industry which peaked in mid-August, and gradually decreased. If we look at 9/16/2024, we also see there was a sharp peak in insider buying for the healthcare industry, with 30 total transactions.
+If we look at the Buy vs Sell chart, we see a gradual rise in the number of transactions in the middle of the quarter, suggesting that there was momentum in the healthcare industry, which peaked in mid-August and gradually decreased. If we look at 9/16/2024, we also see there was a sharp peak in insider buying for the healthcare industry, with 30 total transactions.
 
 ![Stock Prices](images/stockprices.png)
 
 *Stock Price Increases and Decreases in the Healthcare Sector*
 
-If we focus in on what was happening on that day, we can see the stocks prices that increased and decreased as a result of that large volumne of transaction.
+If we focus on what was happening on that day, we can see the stock prices that increased and decreased as a result of that large volume of transactions.
+
+## Recommendations/Investment Strategies (Healthcare Example)
+
+Here’s how the dashboard can be used to help guide investment decisions in the healthcare sector:
+
+- **Sector Confidence:** The healthcare sector is experiencing more insider buying compared to others, which may indicate higher confidence in this sector's outlook.
+- **Cyclical Investment Cycle:** In the current quarter, insider buying in the healthcare sector showed two peaks, both occurring mid-month (August and September). This suggests that insider activity in this sector may follow a cyclical pattern.
+- **Stock Price Increases:** Two companies—Mbx Biosciences, Inc, and Zenas Biopharma, Inc—ranked in the top 5 for highest insider traded value this quarter. Since the insider transactions, their stock prices have increased by 47.25% and 11.29%, respectively. This suggests that insider buying might have contributed to positive stock price movements.
+
+This example highlights how the dashboard can help investors gain valuable insights into insider transactions.
+
+## Conclusion
+
+The dashboard is a powerful tool for investors seeking to understand insider trading activity. With various visualizations and filters, users can customize their analysis by sector, date range, or transaction type. 
+
+The automated data pipeline scrapes and processes insider trading data daily, providing up-to-date stock prices and new transactions. This makes it especially useful for gaining real-time insights.
 
 ## Setup
 Here is the list of required Python packages:
