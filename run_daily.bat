@@ -8,9 +8,9 @@ IF ERRORLEVEL 1 (
     EXIT /B 1
 )
 
-CALL conda activate csc371
+CALL conda activate your_env_name
 
-python live_save_insider.py
+python daily_save_insider.py
 python ticker_prices.py
 
 ECHO Data saved successfully
