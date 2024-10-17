@@ -55,7 +55,7 @@ end = startTime
 unique_tickers['current_price'] = unique_tickers['ticker'].apply(lambda x: get_price(x, start, end))
 unique_tickers[f'moving_average_{PERIOD}'] = unique_tickers['ticker'].apply(lambda x: get_ma(x, start, end))
 
-unique_tickers.to_csv(os.path.join(csv_directory, 'ticker_price_list.csv'))
+unique_tickers.to_csv(os.path.join(csv_directory, 'ticker_price_list.csv'), index=False)
 
 endtime = f"Execution Time: {datetime.now() - startTime}"
 print(f'ticker_price_list.py - Stock prices for today at {startTime}, collected')
